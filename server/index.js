@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 require("dotenv").config();
 
 const userRouter =  require('./routes/user.route');
-
+const authRouter = require('./routes/auth.route')
 mongoose.connect(process.env.MONGO_URL).then(() => {
     console.log("connected to mongo db");
 } ).catch((err) => {
@@ -11,6 +11,7 @@ mongoose.connect(process.env.MONGO_URL).then(() => {
 })
 
 const app = express();
+app.use(express.json());
 
 const PORT = 3000;
 
@@ -22,6 +23,9 @@ app.listen(PORT, () => {
 // user routes
 app.use("/api/user", userRouter);
 
-app.get('/test', (req, res) => {
+// authentication routes
+app.use("/api/auth", authRouter);
+
+app.get('/api/test', (req, res) => {
     res.json({"message": "Hello world"});
 })
