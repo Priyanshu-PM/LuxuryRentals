@@ -48,10 +48,12 @@ const signin = catchAsyncErrors( async (req, res, next) => {
 
         const token = validUser.generateJWT();
 
+        // destructuring the password and other information
+        const { password: pass, ...userInfo } = validUser._doc;
         res.cookie('access_token', token, {httpOnly: true }).status(201).json({
           success: true,
           message: "Login successfully",
-          data: { user: validUser, tokem: token },
+          data: { user: userInfo, tokem: token },
         });
         
     } catch (error) {
