@@ -40,4 +40,33 @@ const updateUser = async (req, res, next) => {
         }
 };
 
-module.exports = { test, updateUser };
+const deleteUser = async (req, res, next) => {
+
+    if(req.user.id !== req.params.id)   return res.status(401).json({
+        success: false,
+        message: "Unauthorized, Please provide authorization token from update user.",
+    });
+
+    try {
+
+        await User.findByIdAndDelete(req.params.id);
+
+        res.clearCookie('access_token');
+        return res.status(200).json({
+            success: true,
+            message: "User has been deleted",
+        });
+
+    } catch (error) {
+
+        next(error);
+    }
+    
+
+};
+
+module.exports = {
+    test, 
+    updateUser, 
+    deleteUser 
+};

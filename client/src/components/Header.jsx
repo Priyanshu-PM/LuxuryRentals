@@ -32,7 +32,7 @@ export default function Header() {
                         alt='profile'
                     />
                 ): (
-                    <li className=' hover:underline'>
+                    <li className= 'hover:underline'>
                     Sign In
                     </li>
 

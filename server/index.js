@@ -3,7 +3,9 @@ const mongoose = require('mongoose');
 const errorMiddleware = require("./middlewares/error");
 
 const userRouter =  require('./routes/user.route');
-const authRouter = require('./routes/auth.route')
+const authRouter = require('./routes/auth.route');
+const listingRouter = require('./routes/listing.route');
+
 require("dotenv").config();
 
 const cookieParser = require('cookie-parser');
@@ -31,6 +33,9 @@ app.use("/api/user", userRouter);
 
 // authentication routes
 app.use("/api/auth", authRouter);
+
+// listing routes
+app.use('/api/listing', listingRouter);
 
 // middleware
 
