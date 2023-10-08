@@ -27,7 +27,7 @@ export default function Header() {
                 <Link to={"/profile"} className='flex items-center justify-center'>
                 {currentUser ? (
                     <img 
-                        className='h-12 w-12 rounded-full'
+                        className='h-10 w-10 rounded-full'
                         src={currentUser.data.user.avatar} 
                         alt='profile'
                     />
