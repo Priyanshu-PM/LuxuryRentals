@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
+import { OAuth } from '../components/OAuth';
 
 export default function SignUp() {
 
@@ -76,6 +77,7 @@ export default function SignUp() {
         onClick={handleSubmit}
         >{
           loading ? "Loading...": "Sign up" }</button>
+          <OAuth/>
       </form>
       <div className='flex gap-2 mt-5 font-semibold'>
       <p>Have an account ?</p>
