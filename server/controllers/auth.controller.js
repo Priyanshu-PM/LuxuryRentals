@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const catchAsyncErrors = require('../middlewares/catchAsyncErrors');
 
 
-const signup = catchAsyncErrors( async  (req, res, next) => {
+const signup = async  (req, res, next) => {
 
     // console.log("Request has arrived !!");
     console.log(req.body);
@@ -24,18 +24,18 @@ const signup = catchAsyncErrors( async  (req, res, next) => {
     } catch (error) {
         next(error);
     }
-});
+};
 
-const signin = catchAsyncErrors( async (req, res, next) => {
+const signin = async (req, res, next) => {
     const { email, password } = req.body;
-    try {
 
+    try {
         const validUser = await User.findOne({email});
         if(!validUser) {
             return res.status(401).json({ success: false, message: "User not found" });
         }
-
-        const isMatched = validUser.comparePassword(password);
+        const isMatched = await validUser.comparePassword(password);
+        console.log("Matched is : ", isMatched);
 
         // const isMatched = bcryptjs.compareSync(password, validUser.password);
         
@@ -50,7 +50,8 @@ const signin = catchAsyncErrors( async (req, res, next) => {
 
         // destructuring the password and other information
         const { password: pass, ...userInfo } = validUser._doc;
-        res.cookie('access_token', token, {httpOnly: true }).status(201).json({
+
+        res.cookie('access_token', token, {httpOnly: true }).status(200).json({
           success: true,
           message: "Login successfully",
           data: { user: userInfo, tokem: token },
@@ -61,7 +62,6 @@ const signin = catchAsyncErrors( async (req, res, next) => {
     }
     
 
-});
-
+};
 
 module.exports = { signup, signin };
