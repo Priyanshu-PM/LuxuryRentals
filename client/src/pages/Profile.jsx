@@ -42,7 +42,7 @@ export default function Profile() {
       },
       () => {
         // Handle successful upload completion.
-        console.log('Upload complete');
+        // console.log('Upload complete');
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => 
             setFormData({...formData, avatar: downloadURL}));
       }

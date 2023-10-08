@@ -1,10 +1,13 @@
 const express = require('express');
 const mongoose = require('mongoose');
-require("dotenv").config();
 const errorMiddleware = require("./middlewares/error");
 
 const userRouter =  require('./routes/user.route');
 const authRouter = require('./routes/auth.route')
+require("dotenv").config();
+
+const cookieParser = require('cookie-parser');
+
 mongoose.connect(process.env.MONGO_URL).then(() => {
     console.log("connected to mongo db");
 } ).catch((err) => {
@@ -12,7 +15,9 @@ mongoose.connect(process.env.MONGO_URL).then(() => {
 })
 
 const app = express();
+
 app.use(express.json());
+app.use(cookieParser());
 
 const PORT = 3000;
 
