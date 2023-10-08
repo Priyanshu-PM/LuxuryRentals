@@ -1,12 +1,15 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
+
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
-//   apiKey: import.meta.VITE_FIREBASE_API_KEY,
-  apiKey: "AIzaSyCjVD1h_frrXQZemLqiwXSrT28ybp3vMiI",
+
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
 
   authDomain: "luxury-rentals-ec407.firebaseapp.com",
   projectId: "luxury-rentals-ec407",
