@@ -7,7 +7,7 @@ import Profile from './pages/Profile'
 import About from './pages/About'
 import Header from './components/Header'
 import { PrivateRoute } from './components/PrivateRoute'
-import { CreateListing } from './pages/Create_Listing'
+import { CreateListing } from './pages/CreateListing'
 
 const App = () => {
   return (
