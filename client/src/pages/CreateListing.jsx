@@ -159,7 +159,8 @@ export const CreateListing = () => {
       }
       setError(false);
       console.log("Successfully posted the listing");
-      navigate(`/listing/${data._id}`);
+      console.log(data.data.listing._id);
+      navigate(`/listing/${data.data.listing._id}`);
     } catch (error) {
       
       setLoading(false);
