@@ -1,5 +1,6 @@
 const bcryptjs = require('bcryptjs');
 const User = require('../models/User.modal')
+const Listing = require('../models/Listing.modal')
 
 const test = (req, res) => {
     res.json({
@@ -63,8 +64,31 @@ const deleteUser = async (req, res, next) => {
     }
 };
 
+const getUserListings = async (req, res, next) => {
+
+    if(req.user.id !== req.params.id)   return res.status(401).json({
+        success: false,
+        message: "Unauthorized, Please provide authorization token.",
+    });
+    try {
+
+        const listings = await Listing.find({userRef: req.params.id});
+        return res.status(200).json({
+            success: true,
+            data: listings,
+        });
+
+    } catch (error) {
+
+        next(error);
+    }
+
+
+};
+
 module.exports = {
     test, 
     updateUser, 
-    deleteUser 
+    deleteUser,
+    getUserListings
 };

@@ -31,13 +31,16 @@ const signin = async (req, res, next) => {
 
     try {
         const validUser = await User.findOne({email});
+        console.log(validUser);
         if(!validUser) {
             return res.status(401).json({ success: false, message: "User not found" });
         }
-        const isMatched = await validUser.comparePassword(password);
-        console.log("Matched is : ", isMatched);
+        // const isMatched = await validUser.comparePassword(password);
+        // console.log("Matched is : ", isMatched);
 
-        // const isMatched = bcryptjs.compareSync(password, validUser.password);
+
+        const isMatched = bcryptjs.compare(password, validUser.password);
+        console.log("Matched is : ",isMatched);
         
         if(!isMatched) {
             return res.status(401).json({success: false, message: "Wrong password"});
@@ -87,7 +90,7 @@ const google = async (req, res, next) => {
             const hashedPassword = bcryptjs.hashSync(generatedPassword, 10);
             
             const newUser = new User({
-                username: req.body.name.split("").join("").toLowerCase() + Math.random().toString(36).slice(-4) , 
+                username: req.body.name.split(" ").join("").toLowerCase() + Math.random().toString(36).slice(-4) , 
                 email: req.body.email, 
                 password: hashedPassword,
                 avatar: req.body.photo
