@@ -12,6 +12,7 @@ export const CreateListing = () => {
   const navigate = useNavigate();
   const { currentUser } = useSelector(state => state.user); 
   const [files, setFiles] = useState([]);
+
   const [formData, setFormData] = useState({
 
     imageURLs: [],
@@ -28,6 +29,7 @@ export const CreateListing = () => {
     furnished: false,
 
   });
+
   const [imageUploadError, setImageUploadError] = useState(false);
   const [uploading, setUploading] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -53,6 +55,7 @@ export const CreateListing = () => {
         setFormData({
           ...formData, 
           imageURLs: formData.imageURLs.concat(urls),
+
         });
         setImageUploadError(false);
         setUploading(false);
