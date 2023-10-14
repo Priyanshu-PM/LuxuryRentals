@@ -18,7 +18,7 @@ const createListing = async (req, res, next) => {
 
 const deleteListing = async (req, res, next) => {
 
-    console.log("api route hitting")
+    // console.log("api route hitting")
     const listing = await Listing.findById(req.params.id);
 
     if(!listing) {
