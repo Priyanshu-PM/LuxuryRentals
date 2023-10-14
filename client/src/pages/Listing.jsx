@@ -13,15 +13,22 @@ import 'swiper/css/bundle';
 // ------------------------------------------------------
 
 import { FaMapMarkerAlt, FaBed, FaBath, FaParking, FaChair } from 'react-icons/fa';
+import { useSelector } from "react-redux";
+import Contact from "../components/Contact";
 
 export default function Listing() {
 
     // const navigate = useNavigate();
+
+    
+    const { currentUser } = useSelector(state => state.user);
+
     SwiperCore.use([Navigation]);
     const params = useParams();
 
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
+    const [contact, setContact] = useState(false);
     const [listing, setListing] = useState({
 
         imageURLs: [],
@@ -125,9 +132,17 @@ export default function Listing() {
             </ul>
             
             <div className=" px-4 my-7">
-            <button  className=" w-full p-2 rounded-lg  uppercase bg-green-700 text-white">Contact Owner
-            </button>
+            {
+                currentUser && listing.userRef !== currentUser.data.user._id && !contact && (
+
+                    <button onClick={() => setContact(true)}  className="text-semibold w-full p-3 rounded-lg  uppercase bg-slate-700 text-white hover:opacity-95 transition-all">Contact landlord
+                    </button>
+                )
+            }
+            {contact && <Contact listing={listing}/>}
             </div>
+
+
         
             </div>
         </div>

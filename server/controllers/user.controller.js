@@ -86,9 +86,32 @@ const getUserListings = async (req, res, next) => {
 
 };
 
+const getUser = async (req, res, next) => {
+
+    // if(req.user.id !== req.params.id)   return res.status(401).json({
+    //     success: false,
+    //     message: "Unauthorized, Please provide authorization token.",
+    // });
+
+    try {
+
+        const owner = await User.findById(req.params.id);
+        const { password: pass, ...rest} = owner._doc;
+        return res.status(200).json({
+            success: true,
+            data: rest,
+        });
+        
+    } catch (error) {
+        next(error);
+    }
+
+};
+
 module.exports = {
     test, 
     updateUser, 
     deleteUser,
-    getUserListings
+    getUserListings,
+    getUser
 };
