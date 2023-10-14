@@ -292,7 +292,7 @@ export const UpdateListing = () => {
           <button disabled={loading || uploading} className="p-3 bg-slate-700 text-white rounded-lg uppercase hover:opacity-95 disabled:opacity-80">
            {loading ? "Updating" : "Update Listing"}
           </button>
-          <p className="text-red-600 ">{error && error}</p>
+          {/** <p className="text-red-600 ">{error && error}</p>  */}
         </div>
       </form>
     </main>
