@@ -184,9 +184,8 @@ export const UpdateListing = () => {
         return;
       }
       setError(false);
-      console.log("Successfully posted the listing");
-      console.log(data.data.listing._id);
-      navigate(`/listing/${data.data.listing._id}`);
+      console.log("Successfully updated the listing");
+      navigate(`/listing/${data.data._id}`);
     } catch (error) {
       
         console.log(error.message);

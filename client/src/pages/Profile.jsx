@@ -150,6 +150,7 @@ export default function Profile() {
 
   const handleShowListings = async (e) => {
 
+    // console.log("show listing hitting")
       e.preventDefault();
       try {
         setShowListingsError(false);
