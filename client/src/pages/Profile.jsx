@@ -192,11 +192,6 @@ export default function Profile() {
       console.log("error occured");
     }
   };
-
-  const handleEditListing = async (id) => {
-
-  };
-
   
   return (
     <div className='p-3 max-w-lg mx-auto'>
@@ -298,7 +293,9 @@ export default function Profile() {
                 
               </Link>
               <div className='flex flex-col gap-2 justify-between '>
-                <button onClick={() => handleEditListing(listing._id)} className='border border-green-600 text-green-600 p-1 px-3 rounded-lg'>Edit</button>
+                <Link to={`/update-listing/${listing._id}`}>
+                  <button className='border border-green-600 text-green-600 p-1 px-3 rounded-lg w-full'>Edit</button>
+                </Link>
                 <button onClick={() => handleDeleteListing(listing._id)} className='border border-red-700 text-red-700 p-1 px-3 rounded-lg'>Delete</button>
               </div>
               
