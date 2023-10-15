@@ -32,7 +32,7 @@ export default function Contact({listing}) {
     const handleChange = (e) => {
 
         setMessage(e.target.value);
-        console.log(message);
+        // console.log(message);
     };
 
   return (

@@ -59,7 +59,7 @@ export default function Listing() {
                 const data = await res.json();
                 if(data.success === false) {
                     setError(true);
-                    console.log(data.message);
+                    // console.log(data.message);
                     setLoading(false);
                     return;
                 }

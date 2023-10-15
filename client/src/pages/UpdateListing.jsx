@@ -51,7 +51,7 @@ export const UpdateListing = () => {
             return;
         }
         setFormData(data.data);
-        console.log(formData);
+        // console.log(formData);
 
     };
 
@@ -106,7 +106,7 @@ export const UpdateListing = () => {
     uploadTask.on('state_changed', 
     (snapshot) => {
       const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-      console.log(progress);
+      // console.log(progress);
     },
       (error) => {
         reject(error);
@@ -177,18 +177,18 @@ export const UpdateListing = () => {
 
       const data = await res.json();
       setLoading(false);
-      console.log(data);
+      // console.log(data);
       if (data.success === false) {
         setLoading(false);
         setError(data.message);
         return;
       }
       setError(false);
-      console.log("Successfully updated the listing");
+      // console.log("Successfully updated the listing");
       navigate(`/listing/${data.data._id}`);
     } catch (error) {
       
-        console.log(error.message);
+        // console.log(error.message);
       setLoading(false);
       setError(error.message);
     }

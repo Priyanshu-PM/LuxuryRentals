@@ -154,14 +154,14 @@ export const CreateListing = () => {
 
       const data = await res.json();
       setLoading(false);
-      console.log(data);
+      // console.log(data);
       if (data.success === false) {
         setLoading(false);
         setError(data.message);
         return;
       }
       setError(false);
-      console.log("Successfully posted the listing");
+      // console.log("Successfully posted the listing");
       console.log(data.data.listing._id);
       navigate(`/listing/${data.data.listing._id}`);
     } catch (error) {

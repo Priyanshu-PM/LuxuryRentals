@@ -7,7 +7,7 @@ const catchAsyncErrors = require('../middlewares/catchAsyncErrors');
 const signup = async  (req, res, next) => {
 
     // console.log("Request has arrived !!");
-    console.log(req.body);
+    // console.log(req.body);
     const {username, email, password } = req.body;
     const hashedPassword = bcryptjs.hashSync(password, 10);
 
@@ -31,7 +31,7 @@ const signin = async (req, res, next) => {
 
     try {
         const validUser = await User.findOne({email});
-        console.log(validUser);
+        // console.log(validUser);
         if(!validUser) {
             return res.status(401).json({ success: false, message: "User not found" });
         }
