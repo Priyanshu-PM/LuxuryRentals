@@ -75,7 +75,7 @@ export default function Listing() {
         };
         
         fetchListing();
-        console.log(listing);
+        // console.log(listing);
     
       }, loading);
 
@@ -89,7 +89,7 @@ export default function Listing() {
             <Swiper navigation={true}>
             {
                 listing.imageURLs.map((url) => (
-                    console.log(url),
+                    // console.log(url),
                     <SwiperSlide key={url}>
                         <div className="h-[500px]" style={{background: `url(${url}) center no-repeat`, backgroundSize: "cover"}}>
                         </div>
@@ -131,7 +131,7 @@ export default function Listing() {
             <li className="flex items-center gap-2 text-green-700 font-bold"><FaChair/>{listing.furnished ? (<p>Furnished</p>) : (<p>Not furnished</p>)}</li>
             </ul>
             
-            <div className=" px-4 my-7">
+            <div className=" px-4 my-7 ">
             {
                 currentUser && listing.userRef !== currentUser.data.user._id && !contact && (
 
@@ -139,7 +139,9 @@ export default function Listing() {
                     </button>
                 )
             }
-            {contact && <Contact listing={listing}/>}
+            
+                {contact === true && <Contact listing={listing}/>}
+            
             </div>
 
 

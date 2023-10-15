@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default function Contact({listing}) {
 
+    // console.log(listing.userRef);
     const [landLord, setLandLord] = useState(null);
     const [message, setMessage] = useState(null);
 
@@ -12,12 +13,12 @@ export default function Contact({listing}) {
 
             try {
                 
-                console.log(listing.userRef);
+                // console.log(listing.userRef);
                 const res = await fetch(`/api/user/${listing.userRef}`);
                 const data = await res.json();
                 // console.log(data);
-                setLandLord(data.data);
-                console.log(landLord);
+                setLandLord(data);
+                // console.log(landLord);
 
             } catch (error) {
                 console.log("error while fetching")
