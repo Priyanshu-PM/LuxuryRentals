@@ -62,17 +62,15 @@ export default function Home() {
         <Link
           to={'/search'}
           className='text-xs sm:text-sm text-blue-800 font-bold hover:underline'
-        >
-          Let's get started...
-        </Link>
+        >Lets get started...</Link>
       </div>
 
       {/* swiper */}
       <Swiper navigation>
         {offerListings &&
           offerListings.length > 0 &&
-          offerListings.map((listing) => (
-            <SwiperSlide>
+          offerListings.map((listing, index) => (
+            <SwiperSlide key={index}>
               <div
                 style={{
                   background: `url(${listing.imageURLs[0]}) center no-repeat`,
